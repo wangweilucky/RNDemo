@@ -14,6 +14,9 @@ import {
   View,
   Text,
   StatusBar,
+  Image,
+  Dimensions,
+  Platform
 } from 'react-native';
 
 import {
@@ -23,6 +26,8 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+
+import WWText from '.componment/WWText';
 
 const App: () => React$Node = () => {
   return (
@@ -70,12 +75,20 @@ const App: () => React$Node = () => {
             </View>
             <LearnMoreLinks />
             <View style={stylesEnd.sectionContainer}>
-              <Text style={stylesEnd.iconContainer}> 王大吉1 </Text>
               <Text style={stylesEnd.textTitle}> 王大吉1 </Text>
               <Text style={stylesEnd.textTitle}> 王大吉1 </Text>
               <Text style={stylesEnd.textTitle}> 王大吉1 </Text>
               <Text style={stylesEnd.textTitle}> 王大吉1 </Text>
             </View>
+            <View>
+              <Text style={stylesDimensions.textTitle}>当前屏幕的宽：{Dimensions.get('window').width} </Text>
+              <Text style={stylesDimensions.textTitle}>当前屏幕的高：{Dimensions.get('window').height} </Text>
+              <Text style={stylesDimensions.textTitle}>当前屏幕的分辨率：{Dimensions.get('window').scale} </Text>
+              <Text style={stylesDimensions.textTitle}>当前平台：{Platform.OS} </Text>
+            </View>
+          </View>
+          <View>
+            <WWText></WWText>
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -83,17 +96,30 @@ const App: () => React$Node = () => {
   );
 };
 
+const stylesDimensions = StyleSheet.create({
+  textTitle: {
+    textAlign: "center",
+    margin: 10
+  }
+})
+
 const stylesEnd = StyleSheet.create({
   textTitle: {
     color: Colors.red,
-    fontSize: 24
+    fontSize: 12,
+    backgroundColor: 'red'
   },
   body: {
     backgroundColor: Colors.white,
   },
   sectionContainer: {
-    padding: 24,
-    flexDirection:'row',
+    padding: 12,
+    margin: 0,
+    // top:-12,
+    left: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    backgroundColor: 'yellow'
   },
   iconContainer: {
     width: 100,
